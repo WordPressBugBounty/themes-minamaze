@@ -79,6 +79,9 @@ The following opensource projects, graphics, fonts, API's or other files as list
 
 == Changelog ==
 
+= 1.10.1
+- Fixed:   Welcome notice can now be dismissed.
+
 = 1.10.0
 - Fixed:   Customer options updated to ensure full compatibility with WordPress v6.7+.
 

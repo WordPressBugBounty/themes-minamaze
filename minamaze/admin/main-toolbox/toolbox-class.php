@@ -38,6 +38,12 @@ if ( ! class_exists( 'thinkup_toolbox_section' ) ) {
 		 *
 		 * @var string $theme_name_slug The theme name.
 		 */
+		private $theme_name_slug;
+		/**
+		 * Get the theme name using wp_get_theme.
+		 *
+		 * @var string $theme_name_base The theme name.
+		 */
 		private $theme_name_base;
 		/**
 		 * Get the theme slug ( theme folder name ).
@@ -107,11 +113,13 @@ if ( ! class_exists( 'thinkup_toolbox_section' ) ) {
 		public function setup_config() {
 			$theme = wp_get_theme();
 			if ( is_child_theme() ) {
-				$this->theme      = $theme->parent();
-				$this->theme_name = $theme->parent()->get( 'Name' );
+				$this->theme           = $theme->parent();
+				$this->theme_name      = $theme->parent()->get( 'Name' );
+				$this->theme_name_slug = strtolower( str_replace( ' ', '_', $theme->get( 'Name' ) ) );
 			} else {
-				$this->theme      = $theme->parent();
-				$this->theme_name = $theme->get( 'Name' );
+				$this->theme           = $theme->parent();
+				$this->theme_name      = $theme->get( 'Name' );
+				$this->theme_name_slug = strtolower( str_replace( ' ', '_', $theme->get( 'Name' ) ) );
 			}
 			$this->theme_name_base = strtolower(str_replace(' ', '-', $theme->get( 'Name' )));
 			$this->theme_version   = $theme->get( 'Version' );
@@ -241,6 +249,11 @@ if ( ! class_exists( 'thinkup_toolbox_section' ) ) {
 		 */
 		public function welcome_admin_notice() {
 
+			// Format theme slug
+			$theme_slug = strtolower( $this->theme_name_slug );
+			$theme_slug = str_replace( '(lite)', '', $theme_slug );
+			$theme_slug = str_replace( '(free)', '', $theme_slug );
+
 			// Format theme name
 			$theme_name = strtolower( $this->theme_name );
 			$theme_name = str_replace( '(lite)', '', $theme_name );
@@ -249,7 +262,7 @@ if ( ! class_exists( 'thinkup_toolbox_section' ) ) {
 			if ( ! empty( $this->notification ) ) {
 
 				// display notice if not previously dismissed
-				if ( current_user_can( 'edit_theme_options' ) && !get_option( $theme_name . '_thinkup_notice_welcome' ) ) {
+				if ( current_user_can( 'edit_theme_options' ) && !get_option( $theme_slug . '_thinkup_notice_welcome' ) ) {
 
 					echo '<div class="thinkup-toolbox-about updated notice is-dismissible">';
 					echo '<a class="notice-dismiss" href="' . esc_url(wp_nonce_url(remove_query_arg(array('activated'), add_query_arg('thinkup-hide-notice', 'welcome')), 'thinkup_hide_notices_nonce', '_thinkup_notice_nonce')) . '" style="z-index: 0;padding: 10px;text-decoration: none;" >';
@@ -630,15 +643,20 @@ if ( ! class_exists( 'thinkup_toolbox_section' ) ) {
 		 * Hide welcome notice when dismissed.
 		 */
 		public function hide_notice() {
+
+			// Format theme slug
+			$theme_slug = strtolower( $this->theme_name_slug );
+			$theme_slug = str_replace( '(lite)', '', $theme_slug );
+			$theme_slug = str_replace( '(free)', '', $theme_slug );
+
 			if (isset($_GET['thinkup-hide-notice']) && isset($_GET['_thinkup_notice_nonce'])) {
 				if (!wp_verify_nonce($_GET['_thinkup_notice_nonce'], 'thinkup_hide_notices_nonce')) {
-					wp_die(esc_html__('Action failed. Please refresh the page and retry.', strtolower( $theme_name )));
+					wp_die(esc_html__('Action failed. Please refresh the page and retry.', strtolower( $theme_slug )));
 				}
 				if (!current_user_can('edit_theme_options')) {
-					wp_die(esc_html__('You do not have the necessary permission to perform this action.', strtolower( $theme_name )));
+					wp_die(esc_html__('You do not have the necessary permission to perform this action.', strtolower( $theme_slug )));
 				}
-				$hide_notice = sanitize_text_field($_GET['thinkup-hide-notice']);
-				update_option('thinkup_notice_' . $hide_notice, 1);
+				update_option($theme_slug . '_thinkup_notice_welcome', 1);
 			}
 		}
 
