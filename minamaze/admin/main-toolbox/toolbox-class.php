@@ -659,6 +659,5 @@ if ( ! class_exists( 'thinkup_toolbox_section' ) ) {
 				update_option($theme_slug . '_thinkup_notice_welcome', 1);
 			}
 		}
-
 	}
 }
