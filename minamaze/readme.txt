@@ -3,7 +3,7 @@ Contributors: thinkupthemes
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.0
-Version: 1.10.2
+Version: 1.10.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns, three-columns, four-columns, right-sidebar, left-sidebar, custom-header, custom-logo, custom-menu, full-width-template, theme-options, threaded-comments, featured-images, featured-image-header, post-formats, sticky-post, translation-ready, flexible-header, custom-background, grid-layout, footer-widgets, blog, e-commerce, photography, rtl-language-support
@@ -78,6 +78,12 @@ The following opensource projects, graphics, fonts, API's or other files as list
 
 
 == Changelog ==
+
+= 1.10.3
+- Fixed:   Improved accessibility for slider navigation.
+- Fixed:   Accessibility outline improved to more striking. Color changed to #F33F3F.
+- Fixed:   Pingback in header.php changed from bloginfo to get_bloginfo to ensure compatibility with PHP v8+.
+- Updated: Responsive header menu now closes when tabbing out to main content area.
 
 = 1.10.2
 - Updated: Tested up to version updated to ensure users know full compatibility with WordPress v6.9.

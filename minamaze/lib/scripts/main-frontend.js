@@ -11,67 +11,67 @@ jQuery(document).ready(function(){
 
 jQuery('#footer-core .widget-area:last-child').addClass("last");
 
-/* Footer - Footer Widgets Layout (Options 1 - 6) */
+// Footer - Footer Widgets Layout (Options 1 - 6)
 jQuery('#footer-core.option2 .widget-area').addClass("one_half");
 jQuery('#footer-core.option3 .widget-area').addClass("one_third");
 jQuery('#footer-core.option4 .widget-area').addClass("one_fourth");
 jQuery('#footer-core.option5 .widget-area').addClass("one_fifth");
 jQuery('#footer-core.option6 .widget-area').addClass("one_sixth");
 
-/* Footer - Footer Widgets Layout (Option 7) */
+// Footer - Footer Widgets Layout (Option 7)
 jQuery('#footer-core.option7 #footer-col1.widget-area').addClass("one_third");
 jQuery('#footer-core.option7 #footer-col2.widget-area').addClass("two_third");
 
-/* Footer - Footer Widgets Layout (Option 8) */
+// Footer - Footer Widgets Layout (Option 8)
 jQuery('#footer-core.option8 #footer-col1.widget-area').addClass("two_third");
 jQuery('#footer-core.option8 #footer-col2.widget-area').addClass("one_third");
 
-/* Footer - Footer Widgets Layout (Option 9) */
+// Footer - Footer Widgets Layout (Option 9)
 jQuery('#footer-core.option9 #footer-col1.widget-area').addClass("one_fourth");
 jQuery('#footer-core.option9 #footer-col2.widget-area').addClass("three_fourth");
 
-/* Footer - Footer Widgets Layout (Option 10) */
+// Footer - Footer Widgets Layout (Option 10)
 jQuery('#footer-core.option10 #footer-col1.widget-area').addClass("three_fourth");
 jQuery('#footer-core.option10 #footer-col2.widget-area').addClass("one_fourth");
 
-/* Footer - Footer Widgets Layout (Option 11) */
+// Footer - Footer Widgets Layout (Option 11)
 jQuery('#footer-core.option11 #footer-col1.widget-area').addClass("one_fifth");
 jQuery('#footer-core.option11 #footer-col2.widget-area').addClass("four_fifth");
 
-/* Footer - Footer Widgets Layout (Option 12) */
+// Footer - Footer Widgets Layout (Option 12)
 jQuery('#footer-core.option12 #footer-col1.widget-area').addClass("four_fifth");
 jQuery('#footer-core.option12 #footer-col2.widget-area').addClass("one_fifth");
 
-/* Footer - Footer Widgets Layout (Option 13) */
+// Footer - Footer Widgets Layout (Option 13)
 jQuery('#footer-core.option13 #footer-col1.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option13 #footer-col2.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option13 #footer-col3.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option13 #footer-col4.widget-area').addClass("one_half");
 
-/* Footer - Footer Widgets Layout (Option 14) */
+// Footer - Footer Widgets Layout (Option 14)
 jQuery('#footer-core.option14 #footer-col1.widget-area').addClass("one_half");
 jQuery('#footer-core.option14 #footer-col2.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option14 #footer-col3.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option14 #footer-col4.widget-area').addClass("one_sixth");
 
-/* Footer - Footer Widgets Layout (Option 15) */
+// Footer - Footer Widgets Layout (Option 15)
 jQuery('#footer-core.option15 #footer-col1.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option15 #footer-col2.widget-area').addClass("one_third");
 jQuery('#footer-core.option15 #footer-col3.widget-area').addClass("one_half");
 
-/* Footer - Footer Widgets Layout (Option 16) */
+// Footer - Footer Widgets Layout (Option 16)
 jQuery('#footer-core.option16 #footer-col1.widget-area').addClass("one_half");
 jQuery('#footer-core.option16 #footer-col2.widget-area').addClass("one_third");
 jQuery('#footer-core.option16 #footer-col3.widget-area').addClass("one_sixth");
 
-/* Footer - Footer Widgets Layout (Option 17) */
+// Footer - Footer Widgets Layout (Option 17)
 jQuery('#footer-core.option17 #footer-col1.widget-area').addClass("one_fourth");
 jQuery('#footer-core.option17 #footer-col2.widget-area').addClass("one_fourth");
 jQuery('#footer-core.option17 #footer-col3.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option17 #footer-col4.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option17 #footer-col5.widget-area').addClass("one_sixth");
 
-/* Footer - Footer Widgets Layout (Option 18) */
+// Footer - Footer Widgets Layout (Option 18)
 jQuery('#footer-core.option18 #footer-col1.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option18 #footer-col2.widget-area').addClass("one_sixth");
 jQuery('#footer-core.option18 #footer-col3.widget-area').addClass("one_sixth");
@@ -119,9 +119,59 @@ jQuery(document).ready(function(){
 });
 
 
-/* ----------------------------------------------------------------------------------
-	RESPONSIVE MENU - TOGGLE SUB MENUS
----------------------------------------------------------------------------------- */
+// ----------------------------------------------------------------------------------
+//	RESPONSIVE MENU - TOGGLE DROPDOWN
+// ----------------------------------------------------------------------------------
+
+jQuery(document).ready(function (){
+
+	// Assign selector variables
+	const headernav_btn           = jQuery('#header-responsive .btn-navbar');
+	const header_responsive_inner = jQuery('#header-responsive-inner');
+	const header_responsive_links = jQuery('#header-responsive .responsive-links');
+
+console.log( 'headernav_btn - 1' );
+console.log( headernav_btn );
+console.log( header_responsive_inner );
+console.log( header_responsive_links );
+
+	// Open menu
+	headernav_btn.click(function(e){
+console.log( 'RESPONSIVE MENU - 1' );
+		header_responsive_links.toggleClass( 'nav-open' );
+	});
+
+	// Close menu when exiting using keyboard tab
+	header_responsive_inner.on('focusout', function (e) {
+console.log( 'RESPONSIVE MENU - 2' );
+
+		// Get tabbed element
+		const next = e.relatedTarget;
+
+console.log( 'RESPONSIVE MENU - 3' );
+
+		// Exit if invalid element
+		if( !next ) return;
+
+console.log( 'RESPONSIVE MENU - 4' );
+
+		// Do not close if tabbing back to toggle
+		if( headernav_btn.is(next) ) return;
+
+console.log( 'RESPONSIVE MENU - 5' );
+
+		// Close menu if tabbing out to main content area
+		if( ! header_responsive_inner.has(next).length ) {
+console.log( 'RESPONSIVE MENU - 7' );
+			headernav_btn.click();
+		}
+	});
+});
+
+
+// ----------------------------------------------------------------------------------
+//	RESPONSIVE MENU - TOGGLE SUB MENUS
+// ----------------------------------------------------------------------------------
 
 jQuery(document).ready(function (){
 
@@ -409,8 +459,8 @@ jQuery(document).ready(function() {
 		jQuery( '.sc-carousel' ).each( function(i) {
 
 			// Don't run caroufredsel code if the following classes are present.
-			if ( jQuery( this ).hasClass( 'sc-postitem' ) || 
-				 jQuery( this ).hasClass( 'sc-featured' ) || 
+			if ( jQuery( this ).hasClass( 'sc-postitem' ) ||
+				 jQuery( this ).hasClass( 'sc-featured' ) ||
 				 jQuery( this ).hasClass( 'sc-image' ) ) {
 					return;
 			};
@@ -430,7 +480,7 @@ jQuery(document).ready(function() {
 			if ( scroll == 0 || isNaN( scroll ) == true ) scroll = '1';
 			if ( speed == 0 ) speed = '500';
 			if ( effect == 0 ) {
-				effect = '"scroll"'; 
+				effect = '"scroll"';
 			} else {
 				effect = '"' + effect + '"';
 			}
@@ -455,7 +505,7 @@ jQuery(document).ready(function() {
 				}
 			}
 
-				// Apply carousel code if needed				
+				// Apply carousel code if needed
 				if ( jQuery( this ).find( '#' + instanceID + '-inner' ).length ) {
 
 					jQuery( this ).find( '#' + instanceID + '-inner' ).carouFredSel({
@@ -476,18 +526,18 @@ jQuery(document).ready(function() {
 						circular        : true,
 						infinite        : false,
 						auto 	        : false,
-						prev	: {	
+						prev	: {
 							button	: '#' + instanceID + ' .prev',
 							key		: 'left'
 						},
-						next	: { 
+						next	: {
 							button	: '#' + instanceID + ' .next',
 							key		: 'right'
 						},
 						pagination	: '#' + instanceID + ' .pagination',
 						onCreate: function () {
 							jQuery(window).bind("load resize", function() {
-							
+
 							// Set height to testimonial carousel elements - All
 							parentWidthTestimonial = jQuery( '#' + instanceID + '.carousel-testimonial li').outerHeight();
 							jQuery( '#' + instanceID + '.carousel-testimonial' ).height( 'auto' );
@@ -535,7 +585,7 @@ jQuery(document).ready(function() {
 			// Set carousel container height
 			parentHeight = jQuery( '#' + instanceID + ' li').height();
 			jQuery( '#' + instanceID + ' li' ).each(function() {
-				var elementHeight = jQuery(this).height(); 
+				var elementHeight = jQuery(this).height();
 				parentHeight = elementHeight > parentHeight ? elementHeight : parentHeight;
 			});
 
@@ -566,9 +616,9 @@ jQuery(document).ready(function() {
 
 			// Collect slider parameter values
 			var wide = jQuery( element ).data( 'wide' );
-			
+
 			// Format row section for full-screen slider
-			if ( wide == 'on' ) {		
+			if ( wide == 'on' ) {
 				jQuery( element ).closest( '.panel-grid' ).css( 'padding', 0 );
 				jQuery( element ).closest( '.panel-grid-core' ).css( 'margin', 0 ).css( 'maxWidth', '100%' );
 				jQuery( element ).closest( '.panel-grid-cell' ).css( 'padding', 0 );
@@ -582,9 +632,9 @@ jQuery(document).ready(function() {
 
 			// Collect slider parameter values
 			var wide = jQuery( element ).data( 'wide' );
-			
+
 			// Format row section for full-screen slider
-			if ( wide == 'on' ) {		
+			if ( wide == 'on' ) {
 				jQuery( element ).closest( '.panel-grid' ).css( 'padding', 0 );
 				jQuery( element ).closest( '.panel-grid-core' ).css( 'margin', 0 ).css( 'maxWidth', '100%' );
 				jQuery( element ).closest( '.panel-grid-cell' ).css( 'padding', 0 );

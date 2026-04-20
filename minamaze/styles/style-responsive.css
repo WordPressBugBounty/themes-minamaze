@@ -5,7 +5,7 @@
 /* Desktop / Laptop */
 @media only screen and (max-width: 960px) {
 }
-	
+
 /* iPad & Tablet */
 @media only screen and (max-width: 768px) {
 
@@ -32,7 +32,7 @@
 	#logo {
 		float: none;
 		position: static;
-		text-align: center;	
+		text-align: center;
 		margin: 0 10px 10px;
 	}
 	#logo img {
@@ -79,14 +79,6 @@
 		background: #fff;
 		border-left: 1px solid #F0F0F0;
 		border-right: 1px solid #F0F0F0;
-	}	
-	.nav-collapse {
-		visibility: hidden;
-		overflow: hidden;
-		height: 0;
-	}
-	.nav-collapse.in {
-		visibility: visible;
 	}
 	.btn-navbar {
 		display: block;
@@ -103,6 +95,14 @@
 	}
 	.btn-navbar .icon-bar + .icon-bar {
 		margin-top: 3px;
+	}
+	.nav-collapse {
+		visibility: hidden;
+		overflow: hidden;
+		height: 0;
+	}
+	.nav-collapse.in {
+		visibility: visible;
 	}
 	.nav-collapse.collapse {
 		-webkit-transition: height 0.35s ease;
@@ -142,10 +142,12 @@
 		content: "\f068";
 	}
 	#header-responsive .sub-menu {
+		visibility: hidden;
 		overflow: hidden;
 		height: 0;
 	}
 	#header-responsive .sub-menu-show > .sub-menu {
+		visibility: visible;
 		height: auto;
 	}
 	#header-responsive .sub-menu-show > a {
@@ -192,9 +194,9 @@
 	}
 
 	/* Intro / Outro */
-	.action-text.action-teaser h3, 
-	.attention_text h3 { 
-		margin-top: 0px; 
+	.action-text.action-teaser h3,
+	.attention_text h3 {
+		margin-top: 0px;
 	}
 
 	/* Footer */
@@ -204,8 +206,8 @@
 	/* Blog */
 
 	/* Post */
-	.commentlist .children .children .children { 
-		margin: 0px; 
+	.commentlist .children .children .children {
+		margin: 0px;
 	}
 
 	/* Portfolio */
@@ -249,14 +251,14 @@
 		display: none !important;
 	}
 	#main-core,
-	#intro.option1, 
+	#intro.option1,
 	#intro.option2 {
 		margin-left: 0px !important;
 	}
 	#main {
 		width: 100% !important;
 	}
-	#main-core, 
+	#main-core,
 	#intro,
 	.commentlist .children .children {
 		margin: 0px !important;
@@ -295,7 +297,7 @@
 		margin: 0px;
 	}
 
-	/* Intro / Outro */	
+	/* Intro / Outro */
 	.action-text.three_fourth,
 	.action-button.one_fourth.last {
 		width:100%;
@@ -404,8 +406,8 @@
 	#nocomments {
 		margin-left: 0;
 	}
-	
-	/* Single Post Share */	
+
+	/* Single Post Share */
 	#author-image {
 		display: none;
 	}
@@ -504,7 +506,7 @@
 	.btn-navbar {
 		float: none;
 	}
-	
+
 	/* Widgets */
 	.thinkup_widget_categories li span {
 		float: none;
@@ -542,8 +544,8 @@
 
 
 /* Retina Display */
-@media only screen and 
-        (-webkit-min-device-pixel-ratio: 1.5), only screen and 
-        (-o-min-device-pixel-ratio: 3/2), only screen and 
+@media only screen and
+        (-webkit-min-device-pixel-ratio: 1.5), only screen and
+        (-o-min-device-pixel-ratio: 3/2), only screen and
         (min-device-pixel-ratio: 1.5) {
 }
